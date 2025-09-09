@@ -2,8 +2,10 @@
 
 namespace App\Console\Commands;
 
+use App\Notifications\SendNotification;
 use Illuminate\Console\Command;
 use App\Models\Employee;
+use Illuminate\Support\Facades\Notification;
 
 class SendMessage extends Command
 {
@@ -28,6 +30,9 @@ class SendMessage extends Command
     {
         //
         Employee::create(['name' => 'test', 'email' => 'test@gmail.com', 'password' => 'password']);
+        $employee = Employee::where('id', '=', 1)->get(); 
+
         
+        Notification::send($employee, new SendNotification());
     }
 }
