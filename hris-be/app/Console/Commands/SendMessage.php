@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use App\Models\Employee;
 
 class SendMessage extends Command
 {
@@ -11,14 +12,14 @@ class SendMessage extends Command
      *
      * @var string
      */
-    protected $signature = 'app:send-message';
+    protected $signature = 'app:create-people';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Insert people';
 
     /**
      * Execute the console command.
@@ -26,5 +27,7 @@ class SendMessage extends Command
     public function handle()
     {
         //
+        Employee::create(['name' => 'test', 'email' => 'test@gmail.com', 'password' => 'password']);
+        
     }
 }
